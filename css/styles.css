@@ -411,7 +411,11 @@ img {
   justify-content: center;
   gap: 24px;
   list-style: none;
+  padding: 0;
+  margin: 0 auto; /* Центрує блок соцмереж всередині картки */
+  width: 232px;
 }
+
 .team-soc-item {
   width: 40px;
   height: 40px;
