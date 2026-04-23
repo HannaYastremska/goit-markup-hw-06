@@ -1,3 +1,4 @@
+/* Базові стилі */
 body {
   font-family: "Roboto", sans-serif;
   color: #434455;
@@ -8,6 +9,10 @@ body {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.link {
+  text-decoration: none;
 }
 
 h1,
@@ -24,6 +29,10 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 .button {
@@ -127,6 +136,11 @@ img {
   color: #8e8f99;
 }
 
+.modal-check-text a {
+  color: #4d5ae5;
+  text-decoration: underline; /* Зазвичай у макеті воно підкреслене, але синього кольору */
+}
+
 .custom-checkbox {
   width: 16px;
   height: 16px;
@@ -163,9 +177,14 @@ img {
   flex-direction: column;
   justify-content: space-between;
   background-color: #ffffff;
-  /* ХОВАЄМО МЕНЮ ЗА ЕКРАН */
+
   transform: translateX(100%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 1. ПРИБИРАЄМО ПІДКРЕСЛЕННЯ ПРИМУСОВО ДЛЯ ВСІХ ПОСИЛАНЬ В МЕНЮ */
+.menu-container a {
+  text-decoration: none !important;
 }
 
 .menu-container.is-open {
@@ -174,8 +193,9 @@ img {
 
 /* --- Mobile Menu --- */
 .mobile-menu {
-  margin-bottom: auto; /* Виштовхує контакти до низу */
+  margin-bottom: auto;
 }
+
 .mobile-menu-item:not(:last-child) {
   margin-bottom: 40px;
 }
@@ -187,61 +207,53 @@ img {
   letter-spacing: 0.02em;
   color: #2e2f42;
 }
-.mobile-menu-link.current {
-  color: #404bbf; /* Синій для активного пункту */
-}
 
-.mobile-contacts {
-  font-style: normal; /* Це скасує браузерний курсив */
-  margin-bottom: 48px;
+.mobile-menu-link.current {
+  color: #404bbf;
 }
 
 /* Контакти та Соцмережі */
 .mobile-contacts-container {
-  margin-top: auto; /* Притискає контакти до низу */
+  margin-top: auto;
 }
 
-/* Контакти внизу */
+.mobile-contacts {
+  font-style: normal;
+  margin-bottom: 48px;
+}
+
 .mobile-contacts-list {
   display: flex;
   flex-direction: column;
-  gap: 24px; /* Відступ між телефоном і поштою */
-}
-/* Стиль для ТЕЛЕФОНУ (перше посилання) */
-.mobile-contacts-item:first-child .mobile-contacts-link {
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 1.11;
-  letter-spacing: 0.02em;
-  color: #4d5ae5;
+  gap: 24px;
 }
 
-/* Стиль для ПОШТИ (друге посилання) */
-.mobile-contacts-item:last-child .mobile-contacts-link {
+.mobile-contacts-link {
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.02em;
-  color: #434455;
+  color: #4d5ae5; /* Синій колір за макетом */
+  text-decoration: none; /* Про всяк випадок, щоб не було ліній */
 }
 
-/* Акцент для номера телефона */
+/* Акцент для номера телефона (якщо є клас .accent) */
 .mobile-contacts-link.accent {
   font-weight: 700;
   font-size: 36px;
   line-height: 1.11;
   color: #4d5ae5;
-  letter-spacing: 0.02em;
 }
 
+/* СОЦМЕРЕЖІ */
 .mobile-social-list {
   display: flex;
-  gap: 40px; /* Відступ між іконками за макетом */
+  justify-content: flex-start; /* Вирівнювання від початку */
+  gap: 40px;
   list-style: none;
   padding: 0;
 }
 
-/* Посилання - створюємо синє коло */
 .mobile-social-link {
   display: flex;
   align-items: center;
@@ -250,47 +262,36 @@ img {
   height: 40px;
   background-color: #4d5ae5;
   border-radius: 50%;
-  text-decoration: none;
-  line-height: 0;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* 3. БІЛІ ІКОНКИ (найважливіше) */
 .mobile-social-link svg {
-  fill: #f4f4fd;
+  fill: #f4f4fd !important;
 }
 
-/* Ефект при наведенні */
 .mobile-social-link:hover,
 .mobile-social-link:focus {
   background-color: #404bbf;
 }
 
-.js-close-menu {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  background-color: transparent;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* Кнопка закриття */
 .menu-toggle {
   position: absolute;
   top: 24px;
   right: 24px;
-  /* Стилі як у кнопки закриття модалки */
   width: 24px;
   height: 24px;
   border-radius: 50%;
   background-color: transparent;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
 }
 
-/* Ховаємо меню на великих екранах */
 @media screen and (min-width: 768px) {
   .menu-container {
     display: none;
@@ -308,6 +309,10 @@ img {
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
+  }
+
+  .address {
+    font-style: normal;
   }
 }
 
@@ -372,15 +377,29 @@ img {
 
 /* --- Tablet (від 768px) --- */
 @media screen and (min-width: 768px) {
-  /* Ховаємо бургер */
+  /* 1. Ховаємо бургер */
   .burger-btn {
     display: none;
   }
 
-  /* Показуємо навігацію */
+  .header-container {
+    display: flex;
+    align-items: center; /* Вирівнює всіх по вертикалі (по центру) */
+    height: 72px;
+  }
+
+  /* 3. Навігація */
   .header-nav {
     display: flex;
     align-items: center;
+    /* Навігація не має відштовхувати адресу на планшеті, 
+       зазвичай це робить margin-left: auto у самої адреси */
+  }
+
+  /* Твоя структура логотипа */
+  .header-logo {
+    margin-right: 120px;
+    padding: 24px 0;
   }
 
   .nav-list {
@@ -389,7 +408,7 @@ img {
   }
 
   .nav-link {
-    position: relative; /* Обов'язково для позиціонування лінії */
+    position: relative;
     display: block;
     padding: 24px 0;
     color: #2e2f42;
@@ -400,59 +419,84 @@ img {
     transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* Колір при ховері */
   .nav-link:hover,
-  .nav-link:focus {
-    color: #404bbf;
-  }
-
-  /* Стиль для активного посилання (клас .current) */
+  .nav-link:focus,
   .nav-link.current {
     color: #404bbf;
   }
 
-  /* Сама рисочка під активним посиланням */
   .nav-link.current::after {
-    content: ""; /* Порожній контент, щоб псевдоелемент з'явився */
+    content: "";
     position: absolute;
     left: 0;
-    bottom: -1px; /* Притискаємо до нижньої межі хедера */
-
+    bottom: -1px;
     width: 100%;
     height: 4px;
     background-color: #404bbf;
     border-radius: 2px;
   }
 
-  /* Показуємо адресу та робимо її вертикальною (як у макеті для планшета) */
+  /* 4. Адреса: прибираємо великий шрифт і додаємо правильний флекс */
   .address {
     display: block;
-    font-size: 20px;
-    margin-left: auto;
+    font-style: normal;
+    margin-left: auto; /* ОЦЕ відштовхне пошту і телефон в самий край */
   }
 
   .address-list {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* На планшеті — стовпчиком */
     gap: 12px;
   }
 
-  .header-logo {
-    margin-right: 120px;
-    padding: 24px 0;
+  .address-link {
+    font-weight: 400;
+    font-size: 12px; /* На планшеті зазвичай дрібніше, ніж у тебе було */
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+    color: #434455;
+    transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .address-link:hover,
+  .address-link:focus {
+    color: #404bbf;
   }
 }
 
 /* --- Desktop (від 1158px) --- */
 @media screen and (min-width: 1158px) {
+  /* 1. Контейнер: все ще у флексі, але перевіряємо відступи */
+  .header-container {
+    display: flex;
+    align-items: center;
+  }
+
+  /* 2. Логотип: відступ стає меншим (76px замість 120px) */
   .header-logo {
     margin-right: 76px;
   }
 
-  /* На десктопі адреса стає в рядок */
+  /* 3. Навігація: відштовхує контакти в самий край */
+  .header-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  /* 4. Адреса: змінюємо напрямок з колонки в рядок */
+  .address {
+    margin-left: auto; /* Скидаємо планшетний відступ, бо тепер працює margin-right: auto у навигації */
+  }
+
   .address-list {
-    flex-direction: row;
+    flex-direction: row; /* ТУТ — в одну лінію */
     gap: 40px;
+  }
+
+  .address-link {
+    font-size: 16px; /* Збільшуємо шрифт для десктопа */
+    line-height: 1.5;
+    letter-spacing: 0.02em;
   }
 }
 
@@ -461,7 +505,7 @@ img {
   background-color: #2e2f42;
   background-image:
     linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-    url(../images/mob-tablet-images/hero-mob.jpg); /* Шлях до мобільного фото */
+    url(../images/hero/hero-mob.jpg); /* Шлях до мобільного фото */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -475,7 +519,7 @@ img {
   .hero {
     background-image:
       linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-      url(../images/mob-tablet-images/hero-mob@2x.jpg);
+      url(../images/hero/hero-mob@2x.jpg);
   }
 }
 
@@ -496,7 +540,7 @@ img {
     padding: 112px 0;
     background-image:
       linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-      url(../images/mob-tablet-images/hero-tab.jpg);
+      url(../images/hero/hero-tab.jpg);
   }
 
   /* Retina для Tablet */
@@ -504,7 +548,7 @@ img {
     .hero {
       background-image:
         linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-        url(../images/mob-tablet-images/hero-tab@2x.jpg);
+        url(../images/hero/hero-tab@2x.jpg);
     }
   }
 
@@ -519,25 +563,29 @@ img {
 /* --- Hero (Desktop від 1158px) --- */
 @media screen and (min-width: 1158px) {
   .hero {
-    max-width: 1440px;
+    max-width: 1440px; /* Обмежуємо розтягування фону */
+    margin: 0 auto; /* Центруємо секцію, якщо екран більший за 1440px */
     padding: 188px 0;
     background-image:
       linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-      url(../images/hero-people-office.jpg);
+      url(../images/hero/hero-desk.jpg); /* Твоє десктопне фото */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
+}
 
-  /* Retina для Desktop */
-  @media (min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-    .hero {
-      background-image:
-        linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
-        url(../images/mob-tablet-images/hero-desk@2x.jpg);
-    }
+/* Retina для Desktop */
+@media screen and (min-width: 1158px) and (min-resolution: 192dpi) {
+  .hero {
+    background-image:
+      linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
+      url(../images/hero/hero-desk@2x.jpg);
   }
+}
 
-  .hero-title {
-    margin-bottom: 48px;
-  }
+.hero-title {
+  margin-bottom: 48px;
 }
 
 /* --- Features (Mobile: 1 колонка) --- */
@@ -732,7 +780,7 @@ img {
 /* --- Tablet (від 768px) --- */
 @media screen and (min-width: 768px) {
   .team .container {
-    width: 584px;
+    width: 584px; /* Тільки для цієї секції на планшеті */
   }
   .team-list {
     column-gap: 24px;
@@ -957,6 +1005,10 @@ img {
   color: #ffffff;
 }
 
+.footer-input::placeholder {
+  color: #ffffff;
+}
+
 .footer-subscribe-btn {
   display: flex;
   justify-content: center;
@@ -980,12 +1032,11 @@ img {
 /* --- Tablet (від 768px) --- */
 @media screen and (min-width: 768px) {
   .footer-container {
-    flex-direction: row;
-    flex-wrap: wrap; /* Дозволяємо формі "впасти" на другий рядок */
+    width: 584px;
+    display: flex;
+    flex-wrap: wrap; /* Дозволяємо перенос блоків */
+    gap: 72px 24px; /* Відступи: 72px між рядами, 24px між лого та соцмережами */
     align-items: baseline;
-    gap: 72px 24px;
-    width: 584px; /* Магічна ширина для планшета */
-    margin: 0 auto;
   }
 
   .footer-logo-box,
@@ -1003,12 +1054,9 @@ img {
 /* --- Desktop (від 1158px) --- */
 @media screen and (min-width: 1158px) {
   .footer-container {
-    width: 1158px; /* ПЕРЕБИВАЄМО планшетні 584px */
-    display: flex;
-    align-items: baseline;
-    flex-wrap: nowrap;
+    width: 1158px;
+    flex-wrap: nowrap; /* Все в одну лінію */
     gap: 0;
-    margin: 0 auto; /* Центруємо сам контейнер */
   }
 
   .footer-logo-box {

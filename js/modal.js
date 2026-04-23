@@ -5,10 +5,13 @@
     modal: document.querySelector("[data-modal]"),
   };
 
+  if (!refs.openModalBtn || !refs.closeModalBtn || !refs.modal) return;
+
+  const toggleModal = () => {
+    refs.modal.classList.toggle("is-open");
+    document.body.classList.toggle("no-scroll");
+  };
+
   refs.openModalBtn.addEventListener("click", toggleModal);
   refs.closeModalBtn.addEventListener("click", toggleModal);
-
-  function toggleModal() {
-    refs.modal.classList.toggle("is-open");
-  }
 })();
