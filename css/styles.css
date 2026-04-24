@@ -765,6 +765,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  font-style: normal;
 }
 
 /* кольори для меню (Email - сірий, Phone - синій) */
@@ -782,6 +783,58 @@ img {
   line-height: 1.2;
   letter-spacing: 0.02em;
   color: #434455;
+}
+/* 1. Стиль для синіх кіл навколо іконок */
+.mobile-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #4d5ae5; /* Синій фон */
+  border-radius: 50%;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 2. Колір самої іконки (білий) всередині синього кола */
+.mobile-social-link svg {
+  fill: #f4f4fd; 
+}
+
+/* 3. Список соцмереж у ряд (як просив ментор) */
+.mobile-social-list {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-social-link:hover,
+.mobile-social-link:focus {
+  background-color: #404bbf;
+}
+
+/* Кнопка закриття */
+.menu-toggle {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #e7e9fc; /* Світло-сірий фон */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Колір самого хрестика всередині */
+.menu-toggle svg {
+  fill: #2e2f42;
 }
 
 @media screen and (min-width: 768px) {
@@ -818,7 +871,7 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   width: calc(100% - 36px);
-  max-width: 392px;
+  max-width: 288px;
   min-height: 584px;
   background-color: #fcfcfc;
   border-radius: 4px;
@@ -1024,3 +1077,26 @@ img {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.js-close-menu {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #e7e9fc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.js-close-menu:hover,
+.js-close-menu:focus {
+  background-color: #404bbf;
+  border: none;
+  fill: #ffffff;
