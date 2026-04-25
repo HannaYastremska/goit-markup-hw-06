@@ -90,6 +90,7 @@ img {
 .nav-list,
 .address {
   display: none;
+  font-style: normal;
 }
 
 .burger-btn {
@@ -111,6 +112,7 @@ img {
   .nav-list,
   .address {
     display: block;
+    font-style: normal;
   }
 
   .header-container {
