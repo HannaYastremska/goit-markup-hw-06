@@ -204,7 +204,7 @@ img {
   background-position: center;
   background-repeat: no-repeat;
   padding: 72px 0;
-  max-width: 320px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -221,7 +221,7 @@ img {
   line-height: 1.11;
   text-align: center;
   color: #ffffff;
-  max-width: 200px;
+  max-width: 320px;
   margin: 0 auto 72px;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -229,7 +229,6 @@ img {
 
 @media screen and (min-width: 768px) {
   .hero {
-    max-width: 768px;
     padding: 112px 0;
     background-image:
       linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
@@ -623,6 +622,7 @@ img {
   gap: 16px;
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .footer-social-link {
@@ -798,7 +798,7 @@ img {
 
 /* 2. Колір самої іконки (білий) всередині синього кола */
 .mobile-social-link svg {
-  fill: #f4f4fd; 
+  fill: #f4f4fd;
 }
 
 /* 3. Список соцмереж у ряд (як просив ментор) */
@@ -1092,7 +1092,9 @@ img {
   justify-content: center;
   padding: 0;
   cursor: pointer;
-  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition:
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .js-close-menu:hover,
@@ -1100,3 +1102,4 @@ img {
   background-color: #404bbf;
   border: none;
   fill: #ffffff;
+}
